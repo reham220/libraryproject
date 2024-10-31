@@ -9,11 +9,12 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_DIR = os.path.join(BASE_DIR, "apps", "templates")
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +26,8 @@ SECRET_KEY = 'django-insecure-v4_gqdx@%%ej-k--8kt5m=zgo-a6c$u@y+htlbg+=2%-5xg20*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.bookmodule',
     'apps.usermodule',
+
+
 ]
 
 MIDDLEWARE = [
@@ -56,7 +60,7 @@ ROOT_URLCONF = 'libraryproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
